@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,20 +18,22 @@ namespace WaterMarker
             InitializeComponent();
         }
 
+        public string[] files = null; 
+
         private void Main_Load(object sender, EventArgs e)
         {
-            Placement.BackColor = Color.FromArgb(84, 0, 214);
-
+            
         }
 
         private void ButtonChooseFiles_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-
+            RoundProgress.Visible = true;
+            RoundProgress.Value = 55;
         }
 
 
@@ -39,20 +42,28 @@ namespace WaterMarker
 
         }
 
-        private void ChooseFiles_MouseEnter(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
-            ButtonChooseFiles.UseVisualStyleBackColor = false;
-            ButtonChooseFiles.BackColor = Color.Transparent;
-        }
-        private void ChooseFiles_MouseLeave(object sender, EventArgs e)
-        {
-            ButtonChooseFiles.UseVisualStyleBackColor = true;
+            System.Windows.Forms.Application.Exit();
         }
 
-        private void ChooseFiles_MouseHover(object sender, EventArgs e)
+        private void MinimizeButton_Click(object sender, EventArgs e)
         {
-            ButtonChooseFiles.UseVisualStyleBackColor = false;
-            ButtonChooseFiles.BackColor = Color.Transparent;
+           this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void DonateButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://tipply.pl/u/agoral");
+        }
+
+        public void OpenFileDialog()
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.RestoreDirectory = true;
+            openFile.Title = "Wybierz pliki, które mają zostać poddane obróbce";
+            openFile.Multiselect = true;
+            openFile.ShowDialog(this);
         }
     }
 }
