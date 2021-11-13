@@ -32,7 +32,6 @@
             this.ButtonChooseFiles = new System.Windows.Forms.Button();
             this.ChooseWaterMark = new System.Windows.Forms.Button();
             this.MergeWaterMark = new System.Windows.Forms.Button();
-            this.Placement = new System.Windows.Forms.ComboBox();
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.LabelCounter = new System.Windows.Forms.Label();
@@ -48,7 +47,7 @@
             this.ButtonChooseFiles.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.ButtonChooseFiles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ButtonChooseFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonChooseFiles.Location = new System.Drawing.Point(80, 167);
+            this.ButtonChooseFiles.Location = new System.Drawing.Point(81, 185);
             this.ButtonChooseFiles.Name = "ButtonChooseFiles";
             this.ButtonChooseFiles.Size = new System.Drawing.Size(129, 39);
             this.ButtonChooseFiles.TabIndex = 0;
@@ -63,11 +62,12 @@
             this.ChooseWaterMark.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.ChooseWaterMark.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ChooseWaterMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChooseWaterMark.Location = new System.Drawing.Point(167, 279);
+            this.ChooseWaterMark.Location = new System.Drawing.Point(169, 320);
             this.ChooseWaterMark.Name = "ChooseWaterMark";
             this.ChooseWaterMark.Size = new System.Drawing.Size(129, 39);
             this.ChooseWaterMark.TabIndex = 1;
             this.ChooseWaterMark.UseVisualStyleBackColor = false;
+            this.ChooseWaterMark.Click += new System.EventHandler(this.ChooseWaterMark_Click);
             // 
             // MergeWaterMark
             // 
@@ -83,26 +83,6 @@
             this.MergeWaterMark.TabIndex = 2;
             this.MergeWaterMark.UseVisualStyleBackColor = false;
             this.MergeWaterMark.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // Placement
-            // 
-            this.Placement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(0)))), ((int)(((byte)(214)))));
-            this.Placement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Placement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Placement.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Placement.ForeColor = System.Drawing.Color.White;
-            this.Placement.FormattingEnabled = true;
-            this.Placement.Items.AddRange(new object[] {
-            "Lewy Górny Róg",
-            "Lewy Dolny Róg",
-            "Prawy Górny Róg",
-            "Prawy Dolny Róg",
-            "Środek"});
-            this.Placement.Location = new System.Drawing.Point(180, 389);
-            this.Placement.Name = "Placement";
-            this.Placement.Size = new System.Drawing.Size(116, 21);
-            this.Placement.TabIndex = 3;
-            this.Placement.SelectedIndexChanged += new System.EventHandler(this.Placement_SelectedIndexChanged);
             // 
             // MinimizeButton
             // 
@@ -139,10 +119,11 @@
             // LabelCounter
             // 
             this.LabelCounter.AutoSize = true;
+            this.LabelCounter.BackColor = System.Drawing.Color.Transparent;
             this.LabelCounter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LabelCounter.Font = new System.Drawing.Font("Nunito Sans ExtraLight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelCounter.ForeColor = System.Drawing.Color.Transparent;
-            this.LabelCounter.Location = new System.Drawing.Point(339, 174);
+            this.LabelCounter.Location = new System.Drawing.Point(343, 192);
             this.LabelCounter.Name = "LabelCounter";
             this.LabelCounter.Size = new System.Drawing.Size(0, 22);
             this.LabelCounter.TabIndex = 6;
@@ -195,7 +176,6 @@
             this.Controls.Add(this.LabelCounter);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.MinimizeButton);
-            this.Controls.Add(this.Placement);
             this.Controls.Add(this.MergeWaterMark);
             this.Controls.Add(this.ChooseWaterMark);
             this.Controls.Add(this.ButtonChooseFiles);
@@ -213,11 +193,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        //private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button ButtonChooseFiles;
         private System.Windows.Forms.Button ChooseWaterMark;
         private System.Windows.Forms.Button MergeWaterMark;
-        private System.Windows.Forms.ComboBox Placement;
         private System.Windows.Forms.Button MinimizeButton;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Label LabelCounter;
