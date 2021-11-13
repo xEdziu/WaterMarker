@@ -8,6 +8,8 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Media;
 
 namespace WaterMarker
 {
@@ -51,6 +53,15 @@ namespace WaterMarker
                 RoundProgress.Visible = true;
                 RoundProgress.Value = 0;
                 saveFiles();
+            } else if(len == 0)
+            {
+                SystemSounds.Hand.Play();
+                MessageBox.Show("Nie wybrano żadnych plików!");
+                
+            } else if (waterMark == null)
+            {
+                SystemSounds.Hand.Play();
+                MessageBox.Show("Nie wybrano znaku wodnego!");
             }
         }
 
@@ -101,9 +112,10 @@ namespace WaterMarker
             {
                 CombineImages(file, waterMark, filesUploadDir);
                 RoundProgress.Value = countPercent(len, i);
-                RoundProgress.Text = RoundProgress.Value.ToString() + "%";
                 i++;
             }
+
+            SystemSounds.Asterisk.Play();
         }
 
         private void CombineImages(string filePath, string waterMark, string uploadDir)
@@ -114,8 +126,7 @@ namespace WaterMarker
 
             Image imgFile = Image.FromFile(fileInfo.FullName);
             Image imgWaterMark = Image.FromFile(waterMarkInfo.FullName);
-            Image image = resizeImage(imgWaterMark, new Size(imgFile.Width / 2, imgFile.Height / 2));
-            imgWaterMark = image;
+
 
             Bitmap img3 = new Bitmap(filePath);
             Graphics graphics = Graphics.FromImage(img3);
@@ -142,9 +153,5 @@ namespace WaterMarker
             return (actual / len) * 100;
         }
 
-        public Image resizeImage(Image imgToResize, Size size)
-        {
-            return (Image)(new Bitmap(imgToResize, size));
-        }
     }
 }
