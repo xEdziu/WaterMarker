@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Media;
+using System.Diagnostics;
 
 namespace WaterMarker
 {
@@ -31,7 +32,7 @@ namespace WaterMarker
 
         private void ButtonChooseFiles_Click(object sender, EventArgs e)
         {
-
+            RoundProgress.Value = 0;
             files.Clear();
             OpenFileDialog dlg = OpenFileDialog();
 
@@ -55,19 +56,17 @@ namespace WaterMarker
                 saveFiles();
             } else if(len == 0)
             {
-                SystemSounds.Hand.Play();
                 MessageBox.Show("Nie wybrano żadnych plików!");
                 
             } else if (waterMark == null)
             {
-                SystemSounds.Hand.Play();
                 MessageBox.Show("Nie wybrano znaku wodnego!");
             }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
+            Application.Exit();
         }
 
         private void MinimizeButton_Click(object sender, EventArgs e)
@@ -77,16 +76,16 @@ namespace WaterMarker
 
         private void DonateButton_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://tipply.pl/u/agoral");
+            Process.Start("https://tipply.pl/u/agoral");
         }
 
         
 
         private void ChooseWaterMark_Click(object sender, EventArgs e)
         {
-
+            RoundProgress.Value = 0;
             waterMark = null;
-            OpenFileDialog dial = OpenFileDialog(false);
+            OpenFileDialog dial = OpenFileDialog(false, "Wybierz znak wodny, który ma zostać nałożony na zdjęcia");
 
             if (dial.ShowDialog() == DialogResult.OK)
             {
@@ -114,8 +113,8 @@ namespace WaterMarker
                 RoundProgress.Value = countPercent(len, i);
                 i++;
             }
+            Process.Start(filesUploadDir);
 
-            SystemSounds.Asterisk.Play();
         }
 
         private void CombineImages(string filePath, string waterMark, string uploadDir)
@@ -137,20 +136,21 @@ namespace WaterMarker
             img3.Dispose();
         }
         
-        public OpenFileDialog OpenFileDialog(bool multi = true)
+        public OpenFileDialog OpenFileDialog(bool multi = true, string txt = "Wybierz pliki, które mają zostać poddane obróbce")
         {
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.RestoreDirectory = true;
-            openFile.Title = "Wybierz pliki, które mają zostać poddane obróbce";
+            openFile.Title = txt;
             openFile.Multiselect = multi;
             openFile.CheckFileExists = true;
             openFile.CheckPathExists = true;
             return openFile;
         }
 
-        public int countPercent(int len, int actual)
+        public int countPercent(double len, double actual)
         {
-            return (actual / len) * 100;
+            double x = (actual / len) * 100;
+            return (int)x;
         }
 
     }
