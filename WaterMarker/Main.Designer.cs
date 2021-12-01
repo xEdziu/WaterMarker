@@ -35,8 +35,9 @@
             this.MinimizeButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.LabelCounter = new System.Windows.Forms.Label();
-            this.RoundProgress = new WaterMarker.CircularProgressBar();
             this.DonateButton = new System.Windows.Forms.Button();
+            this.RoundProgress = new WaterMarker.CircularProgressBar();
+            this.AICut = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // ButtonChooseFiles
@@ -77,7 +78,7 @@
             this.MergeWaterMark.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.MergeWaterMark.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.MergeWaterMark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MergeWaterMark.Location = new System.Drawing.Point(368, 423);
+            this.MergeWaterMark.Location = new System.Drawing.Point(368, 446);
             this.MergeWaterMark.Name = "MergeWaterMark";
             this.MergeWaterMark.Size = new System.Drawing.Size(214, 75);
             this.MergeWaterMark.TabIndex = 2;
@@ -128,6 +129,22 @@
             this.LabelCounter.Size = new System.Drawing.Size(0, 22);
             this.LabelCounter.TabIndex = 6;
             // 
+            // DonateButton
+            // 
+            this.DonateButton.BackColor = System.Drawing.Color.Transparent;
+            this.DonateButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DonateButton.FlatAppearance.BorderSize = 0;
+            this.DonateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.DonateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.DonateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DonateButton.ForeColor = System.Drawing.Color.Transparent;
+            this.DonateButton.Location = new System.Drawing.Point(1, 497);
+            this.DonateButton.Name = "DonateButton";
+            this.DonateButton.Size = new System.Drawing.Size(323, 75);
+            this.DonateButton.TabIndex = 8;
+            this.DonateButton.UseVisualStyleBackColor = false;
+            this.DonateButton.Click += new System.EventHandler(this.DonateButton_Click);
+            // 
             // RoundProgress
             // 
             this.RoundProgress.BackColor = System.Drawing.Color.Transparent;
@@ -151,26 +168,25 @@
             this.RoundProgress.Value = ((long)(20));
             this.RoundProgress.Visible = false;
             // 
-            // DonateButton
+            // AICut
             // 
-            this.DonateButton.BackColor = System.Drawing.Color.Transparent;
-            this.DonateButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DonateButton.FlatAppearance.BorderSize = 0;
-            this.DonateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.DonateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.DonateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DonateButton.ForeColor = System.Drawing.Color.Transparent;
-            this.DonateButton.Location = new System.Drawing.Point(1, 497);
-            this.DonateButton.Name = "DonateButton";
-            this.DonateButton.Size = new System.Drawing.Size(323, 75);
-            this.DonateButton.TabIndex = 8;
-            this.DonateButton.UseVisualStyleBackColor = false;
-            this.DonateButton.Click += new System.EventHandler(this.DonateButton_Click);
+            this.AICut.AutoSize = true;
+            this.AICut.BackColor = System.Drawing.Color.Transparent;
+            this.AICut.Font = new System.Drawing.Font("Nunito Sans Light", 10F);
+            this.AICut.ForeColor = System.Drawing.Color.Transparent;
+            this.AICut.Location = new System.Drawing.Point(145, 421);
+            this.AICut.Name = "AICut";
+            this.AICut.Size = new System.Drawing.Size(189, 24);
+            this.AICut.TabIndex = 9;
+            this.AICut.Text = "Automatyczne przycinanie";
+            this.AICut.UseVisualStyleBackColor = false;
+            this.AICut.CheckedChanged += new System.EventHandler(this.AICut_CheckedChanged);
             // 
             // Main
             // 
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(951, 577);
+            this.Controls.Add(this.AICut);
             this.Controls.Add(this.DonateButton);
             this.Controls.Add(this.RoundProgress);
             this.Controls.Add(this.LabelCounter);
@@ -202,6 +218,7 @@
         private System.Windows.Forms.Label LabelCounter;
         private CircularProgressBar RoundProgress;
         private System.Windows.Forms.Button DonateButton;
+        private System.Windows.Forms.CheckBox AICut;
     }
 }
 

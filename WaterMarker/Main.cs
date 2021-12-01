@@ -33,6 +33,7 @@ namespace WaterMarker
         private void ButtonChooseFiles_Click(object sender, EventArgs e)
         {
             RoundProgress.Value = 0;
+            RoundProgress.Visible = false;
             files.Clear();
             OpenFileDialog dlg = OpenFileDialog();
 
@@ -84,6 +85,7 @@ namespace WaterMarker
         private void ChooseWaterMark_Click(object sender, EventArgs e)
         {
             RoundProgress.Value = 0;
+            RoundProgress.Visible = false;
             waterMark = null;
             OpenFileDialog dial = OpenFileDialog(false, "Wybierz znak wodny, który ma zostać nałożony na zdjęcia");
 
@@ -153,5 +155,31 @@ namespace WaterMarker
             return (int)x;
         }
 
+        private void AICut_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private Bitmap cropWaterMark(Bitmap wm)
+        {
+            int newLeft = -1;
+            for (int x = 0; x < wm.Width; x++)
+            {
+                for (int y = 0; y < wm.Height; y++)
+                {
+                    Color color = wm.GetPixel(x, y);
+                    if ((color.R != 255) || (color.G != 255) || (color.B != 255) || (color.A != 0))
+                    {
+                        newLeft = x;
+                        break;
+                    }
+                }
+                if (newLeft != -1) break;
+            }
+
+            int newRight = -1;
+
+            return wm;
+        }
     }
 }
